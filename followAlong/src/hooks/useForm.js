@@ -1,7 +1,7 @@
-import { useState } from 'react'
+import { useLocalStorage } from './useLocalStorage';
 
-export const useForm = (initialValue, cb) => {
-    const [value, setValue] = useState(initialValue);
+export const useForm = (key, initialValue, cb) => {
+    const [values, setValues] = useLocalStorage(key, initialValue);
     
 
     const clearForm = () => {
@@ -14,9 +14,8 @@ export const useForm = (initialValue, cb) => {
     }
 
     const handleChanges = e => {
+        localStorage.setItem([e.target.value], e.target.value);
         setValues({...values, [e.target.name]: e.target.value})
-        //have to have that name value in our text inputs
-
     }
 
     return [values, clearForm, handleChanges, handleSubmit]

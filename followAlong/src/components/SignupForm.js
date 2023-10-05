@@ -29,7 +29,7 @@ export default function SignupForm() {
     alert(`${values.username}, ${values.email}`)
   }
  
-  const [values, clearForm, handleChanges, handleSubmit] = useForm(initialValue, callback)
+  const [values, clearForm, handleChanges, handleSubmit] = useForm('sign-in', initialValue, callback)
 
  
  return (
